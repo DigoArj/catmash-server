@@ -13,5 +13,6 @@ export const main = handler(async () => {
     params.ExclusiveStartKey = result.LastEvaluatedKey;
   } while (typeof result.LastEvaluatedKey != 'undefined');
 
+  items.sort((a, b) => b.score - a.score);
   return items;
 });
