@@ -14,3 +14,32 @@ provider:
   runtime: nodejs12.x
   stage: prod
   region: eu-west-3
+
+  # These environment variables are made available to our functions under process.env.
+  environment:
+    tableName: cats
+    catsDataUrl: 'https://latelier.co/data/cats.json'
+
+  # 'iamRoleStatements' defines the permission policy for the Lambda function.
+  # In this case Lambda functions are granted with permissions to access DynamoDB.
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:eu-west-3:*:*"
+
+functions:
+  init:
+    handler: functions/init.main
+    events:
+      - http:
+          path: init
+          method: get
+          cors: true
+          authorizer: aws_iam
