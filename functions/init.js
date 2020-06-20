@@ -9,8 +9,8 @@ export const main = handler(async () => {
     .catch(error => console.log(error));
 
   return Promise.all(cats.map(putItem))
-    .then(() => 'success')
-    .catch(e => ({ error: e }));
+    .then(() => ({ status: 'success' }))
+    .catch(e => ({ status: 'error', ...e }));
 });
 
 const putItem = async ({ id, url }) => {
