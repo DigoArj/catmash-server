@@ -1,3 +1,5 @@
 # catmash backend
 
-Following https://serverless-stack.com guide.
+Following [Serverless Stack](https://serverless-stack.com) guide.
+
+Using [Serverless](https://github.com/serverless/serverless) framework for Amazon Web Services.
