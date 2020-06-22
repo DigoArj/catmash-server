@@ -7,7 +7,6 @@
     "test": "serverless-bundle test"
   },
   "author": "Diogo DE ARAUJO",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/DigoArj/catmash-server.git"
